@@ -1,0 +1,13 @@
+MyNameSpace\MyBundle\Entity\CMS:
+    properties:
+        heading:
+            - NotBlank: ~
+            - Length:  
+               min: 1
+               max: 200
+        image:
+            - NotBlank: ~
+            - Url: ~
+        link:
+            - NotBlank: ~
+            - Url: ~
