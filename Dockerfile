@@ -3,8 +3,6 @@ RUN apt-get update && apt-get install -y curl git nginx php5-fpm php5-cli php5-x
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 WORKDIR /root
 RUN composer create-project -n symfony/framework-standard-edition project
-RUN git clone https://github.com/symfony/symfony-hello-world.git
-RUN sh symfony-hello-world/optimize.sh
 RUN apt-get install -y vim
 WORKDIR /root/project
 RUN rm -Rf app/cache/*
@@ -17,5 +15,6 @@ COPY ["workdir/config.yml","workdir/parameters.yml","workdir/parameters.yml.dist
 RUN php app/console doctrine:database:create
 RUN php app/console doctrine:generate:entity --entity MyNameSpaceMyBundle:CMS --format yml --fields="heading:string(length=200) image:text link:text" --no-interaction
 RUN php app/console doctrine:schema:update --force
+COPY ["workdir","/root/workdir"]
 ENTRYPOINT ["sh","/root/workdir/entrypoint.sh"]
 EXPOSE 80
