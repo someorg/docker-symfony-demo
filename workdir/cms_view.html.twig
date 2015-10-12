@@ -3,6 +3,9 @@
 {% block body %}
 
 <div>
+	{% for flashMessage in app.session.flashbag.get('mybundle-notice') %}
+	{{ flashMessage }}
+	{% endfor %}
 	<div>
 
 	<h1>{{ cms.heading }}</h1>
@@ -12,8 +15,10 @@
 	<div>
 
 	<a href="{{ cms.link }}"><img src="{{cms.image}}"></a>
+        
 
 	</div>
+        <a href="{{ path('set_cms') }}">Edit<a/>
 </div>
 
 {% endblock %}

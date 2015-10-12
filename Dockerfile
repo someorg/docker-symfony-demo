@@ -15,6 +15,6 @@ COPY ["workdir/config.yml","workdir/parameters.yml","workdir/parameters.yml.dist
 RUN php app/console doctrine:database:create
 RUN php app/console doctrine:generate:entity --entity MyNameSpaceMyBundle:CMS --format yml --fields="heading:string(length=200) image:text link:text" --no-interaction
 RUN php app/console doctrine:schema:update --force
-COPY ["workdir","/root/workdir"]
+RUN rm -rf src/AppBundle
 ENTRYPOINT ["sh","/root/workdir/entrypoint.sh"]
 EXPOSE 80

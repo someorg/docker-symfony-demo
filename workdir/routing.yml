@@ -1,0 +1,9 @@
+my_name_space_my:
+    resource: "@MyNameSpaceMyBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+
+homepage:
+  path:     /
+  defaults: { _controller: MyNameSpaceMyBundle:Default:get_cms }

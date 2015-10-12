@@ -7,3 +7,5 @@ cp "validation.yml" /root/project/src/MyNameSpace/MyBundle/Resources/config/
 mkdir -p /root/project/src/MyNameSpace/MyBundle/DataFixtures/ORM
 cp LoadCMS.php /root/project/src/MyNameSpace/MyBundle/DataFixtures/ORM 
 cp AppKernel.php /root/project/app
+cp routing.yml /root/project/app/config
+#cd /root/project/; tar /root/wordkir/sourcefiles/* | tar 

@@ -12,7 +12,7 @@ class DefaultController extends Controller
 {
 
     /**
-     * @Route("/set_cms")
+     * @Route("/set_cms" , name="set_cms")
      */
     public function set_cms(Request $request)
     {
@@ -31,7 +31,9 @@ class DefaultController extends Controller
          $em = $this->getDoctrine()->getManager();
          $em->persist($cms);
          $em->flush();
-         return new Response('CMS set successfully');
+         $this->get('session')->getFlashBag()->add('mybundle-notice', 'Page updated.');
+         return $this->redirect($this->generateUrl('get_cms'));
+         return new Response("blah");
         }
      
         $build['form'] = $form->createView();
@@ -39,9 +41,9 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/get_cms")
+     * @Route("/get_cms" , name="get_cms")
      */
-    public function get_cms()
+    public function get_cmsAction()
     {
         $cms = $this->getDoctrine()->getRepository('MyNameSpaceMyBundle:CMS')->findAll();
         
